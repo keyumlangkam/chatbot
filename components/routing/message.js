@@ -1,6 +1,6 @@
-import quickReplyMessage from '../routing/quickReplyMessage'
-import quickReply from './quickReply';
-import q1 from '../data/q1';
+const quickReplyMessage = require('../routing/quickReplyMessage')
+const quickReply = require('./quickReply')
+const q1 = require('../data/q1')
 
 
  async function message(event){
