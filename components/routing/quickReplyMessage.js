@@ -3,6 +3,10 @@ const q2 = require('../data/q2');
 const q3 = require('../data/q3');
 const q4 = require('../data/q4');
 const q5 = require('../data/q5');
+const date = require('../../utils/getDate')
+const endingDate = require('../../utils/endingDate')
+const Code = require('../../models/code')
+const codeGenerator = require('../../utils/codegenerator')
 const getDiscount = require('./getdiscount')
 
 const quickReply = require('./quickReply');
@@ -36,9 +40,22 @@ if(quickReplyPayload === 'correct ans for q4'){
 }
 if(quickReplyPayload === 'correct ans for q5'){
   const d = await getDiscount(pageID)
-  const congrats = `hey you finished the game, your discount code is ${d} `
-  await sendermessage(senderID, {text: congrats},pageID);
-}
+  const code = codeGenerator()
+  const savingCode = new Code({
+    pageId:pageID,
+    code: code,
+    validTill: endingDate,
+    createdAt: date
+  })
+  try {
+    await savingCode.save()
+    const congrats = `hey you finished the game, get ${d} off with code - [${code}]`
+    await sendermessage(senderID, {text: congrats},pageID);
+ }
+ catch(err){
+    console.log(err)
+  }
+
 if(quickReplyPayload === 'wrong ans for q1'){
   await sendermessage(senderID, {text: incorrectReply},pageID);
   await quickReply2(senderID,pageID,q1);
@@ -61,5 +78,5 @@ if(quickReplyPayload === 'wrong ans for q5'){
 }
 
 }
-
+}
 module.exports = quickReplyMessage
