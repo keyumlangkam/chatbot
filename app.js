@@ -13,5 +13,14 @@ app.use(bodyParser.json());
 
 app.use(fbApi)
 app.use(discount)
-app.listen(PORT)
+mongoose.connect('mongodb+srv://keyum:WypzYsk7huP8k6dE@cluster0.vktkwku.mongodb.net/escapedis')
+.then(result => {
+  console.log('connected to mongoDb')
+  console.log('listening on port 3000')
+  app.listen(PORT)
+})
+.catch(err => {
+  console.log(err)
+})
+
 
