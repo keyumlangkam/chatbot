@@ -4,6 +4,7 @@ const cors = require('cors')
 const app = express();
 const fbApi = require('./routes/fbApiRoutes')
 const discount = require('./routes/discountRoute')
+const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3000
 
 app.use(cors())
