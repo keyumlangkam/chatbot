@@ -1,8 +1,14 @@
-const axios = require('axios')
+const axios = require('axios');
 
-const getDiscount = async() => {
-  const response = await axios.get('https://chatbot-lovq.onrender.com/discount');
-  console.log(response,response.data,response.body)
+const getDiscount = async(pageID) => {
+  const response = await axios.get('https://chatbot-lovq.onrender.com/discount',{
+    headers: {
+      'Authorization': pageID
+    }
+  }
+   
+  );
+  return response.data
 }
 
 module.exports = getDiscount;

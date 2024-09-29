@@ -35,7 +35,7 @@ if(quickReplyPayload === 'correct ans for q4'){
   await quickReply(senderID,pageID,q5);
 }
 if(quickReplyPayload === 'correct ans for q5'){
-  const d = await getDiscount()
+  const d = await getDiscount(pageID)
   const congrats = `hey you finished the game, your discount code is ${d} `
   await sendermessage(senderID, {text: congrats},pageID);
 }

@@ -8,6 +8,7 @@ const q1 = require('../data/q1')
   const pageID = event.recipient.id;
   const statement = event.message.text 
   
+  
   if(statement === 'start game'){ 
     await quickReply(senderID,pageID,q1);  
   }
