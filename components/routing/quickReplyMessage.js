@@ -40,7 +40,7 @@ if(quickReplyPayload === 'correct ans for q4'){
 }
 if(quickReplyPayload === 'correct ans for q5'){
   const d = await getDiscount(pageID)
-  const code = codeGenerator()
+  const [code] = codeGenerator()
   const savingCode = new Code({
     pageId:pageID,
     code: code,
