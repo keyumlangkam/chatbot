@@ -12,7 +12,7 @@ const user = new Schema({
     type: String
   },
   pageId:{
-    type: Number
+    type: String
   },
   discount:{
     required: true,
