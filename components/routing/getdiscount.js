@@ -1,5 +1,7 @@
+const axios = require('axios')
+
 const getDiscount = async() => {
-  const response = await fetch('https://chatbot-lovq.onrender.com/discount');
+  const response = await axios.get('https://chatbot-lovq.onrender.com/discount');
   console.log(response)
 }
 
