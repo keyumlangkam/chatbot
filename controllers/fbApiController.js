@@ -2,6 +2,7 @@ const postBack = require('../components/routing/postback')
 const message = require('../components/routing/message')
 
 exports.verifyConnection = async(req,res,next)=> {
+  console.log(process.env.HI)
   if(req.query['hub.verify_token'] === process.env.VERIFY_TOKEN){
     res.status(200).send(req.query['hub.challenge'])
    } else {

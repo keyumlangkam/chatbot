@@ -3,6 +3,7 @@ const q2 = require('../data/q2');
 const q3 = require('../data/q3');
 const q4 = require('../data/q4');
 const q5 = require('../data/q5');
+const getDiscount = require('./getdiscount')
 
 const quickReply = require('./quickReply');
 const sendermessage = require('./sendermessage');
@@ -13,9 +14,10 @@ async function quickReplyMessage(event){
   const quickReplyPayload = event.message.quick_reply.payload
   const correctReply = 'That is correct'
   const incorrectReply = 'incorrect answer try again';
-  const congrats = 'hey you finished the game'
+  const congrats = `hey you finished the game, your discount code is ${d} `
   const senderID = event.sender.id;
   const pageID = event.recipient.id;
+  const d = await getDiscount()
 
   if(quickReplyPayload === 'correct ans for q1'){
   await sendermessage(senderID, {text: correctReply},pageID);
